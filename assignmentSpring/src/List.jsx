@@ -8,7 +8,6 @@ const fetchData = async () => {
 
 const deleteUser = async (id) => {
     const response = await axios.delete(`http://localhost:9191/deleteUser/${id}`);
-    console.log(response.data);
     return response.data;
 };
 
@@ -39,25 +38,29 @@ const List = () => {
     }
     
     return (
-        <table>
-        <tr>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Phone Number</th>
-            <th>Email</th>
-            <th>Delete</th>
-        </tr>
+        <div>
+            <h2>Persons Saved</h2>
 
-        {items.map((item) => (
-            <tr key={item.id}>
-                <td>{item.firstName}</td>
-                <td>{item.lastName}</td>
-                <td>{item.phoneNumber}</td>
-                <td>{item.email}</td>
-                <td><button onClick={() => deleteItem(item.id)}>❌</button></td>
-            </tr>
-        ))}
-        </table>
+            <table>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Phone Number</th>
+                    <th>Email</th>
+                    <th>Delete</th>
+                </tr>
+
+                {items.map((item) => (
+                    <tr key={item.id}>
+                        <td>{item.firstName}</td>
+                        <td>{item.lastName}</td>
+                        <td>{item.phoneNumber}</td>
+                        <td>{item.email}</td>
+                        <td><button onClick={() => deleteItem(item.id)}>❌</button></td>
+                    </tr>
+                ))}
+            </table>
+        </div>
     );
     };
 
