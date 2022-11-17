@@ -4,8 +4,6 @@ import List from "./List";
 
 function App () {
 
-  const [reload, setReload] = useState(false);
-
   return (
     <>
       <DataUser reload={reload} setReload={setReload}/>
