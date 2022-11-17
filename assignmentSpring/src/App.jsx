@@ -6,7 +6,7 @@ import "./app.css";
 
 
 const sendData = async (data) => {
-  const response = await axios.post(`http://localhost:3000/api/submit`, data);
+  const response = await axios.post(`http://localhost:9191/addUser`, data);
   console.log(response.data);
   return response.data;
 };
@@ -15,7 +15,6 @@ const sendData = async (data) => {
 function App() {
   const { register, handleSubmit, formState: { errors } } = useForm();
   const onSubmit = data => {
-    console.log(data);
     sendData(data)
   };
 
@@ -41,14 +40,14 @@ function App() {
 
         <label className="card">Email 
           <input 
-          {...register("mail", { required: "Email Address is required" })} 
-          aria-invalid={errors.mail ? "true" : "false"} />
+          {...register("email", { required: "Email Address is required" })} 
+          aria-invalid={errors.email ? "true" : "false"} />
       </label>
       
       {errors.firstName && <p role="alert" className="required">{errors.firstName?.message}</p>}
       {errors.lastName && <p role="alert" className="required">{errors.lastName?.message}</p>}
       {errors.phoneNumber && <p role="alert" className="required">{errors.phoneNumber?.message}</p>}
-      {errors.mail && <p role="alert" className="required">{errors.mail?.message}</p>}
+      {errors.email && <p role="alert" className="required">{errors.mail?.message}</p>}
 
         <button type="submit">Submit</button>
       </form>

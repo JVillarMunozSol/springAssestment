@@ -23,6 +23,14 @@ public class UserService {
     public User getUserById(int id){
         return repository.findById(id).orElse(null);
     }
+    public boolean deleteUserById(int id){
+        try {
+            repository.delete(getUserById(id));
+        }catch(Exception e){
+            return false;
+        }
+        return true;
+    }
 
 
 }
